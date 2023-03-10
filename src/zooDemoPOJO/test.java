@@ -13,7 +13,6 @@ public class test {
 		owner.addDog(dog);
 		
 		System.out.println(owner);
-		System.out.println(dog);
 		
 //		
 //		Dog dog= new Dog();
