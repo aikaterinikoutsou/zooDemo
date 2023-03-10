@@ -14,8 +14,6 @@ public class test {
 		
 		System.out.println(owner);
 		System.out.println(dog);
-
-		
 		
 //		
 //		Dog dog= new Dog();
