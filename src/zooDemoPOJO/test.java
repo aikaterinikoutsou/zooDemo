@@ -5,7 +5,6 @@ public class test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	
-		System.out.println("Welcome to zooDemo");
 		
 		Dog dog = new Dog(1,"Indi",null, "Golden");
 		Owner owner = new Owner(1,"Maria", 456956, "maria@email.com");
