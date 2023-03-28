@@ -2,8 +2,9 @@ package zooDemoPOJO;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-
 
 
 //POJO -- Plain Old Java Object
@@ -14,38 +15,67 @@ import java.util.Objects;
 
 public class Dog implements Serializable{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5914010397396325040L;
+
+	private static final long serialVersionUID = 5459002349058385563L;
 	
+	
+	// Has attributes
 	private Integer id;
 	private String name;
-	private Date dob;
 	private String breed;
-	private Owner owner;
+	private String coat;
+	private Date dob;
+	private Boolean cured;
+	private Owner owner; // Many to one relationship
+	private List<Vet> vets; // Many to many relationship
 	
+	// Has an empty constructor
 	public Dog() {
 		super();
+		vets = new ArrayList<Vet>();
 	}
-
 	
-
-	public Dog(Integer id, String name, Date dob, String breed) {
+	
+	
+	public Dog( String name, String breed, String coat, Date dob, Boolean cured) {
 		super();
-		this.id = id;
 		this.name = name;
-		this.dob = dob;
 		this.breed = breed;
-		
+		this.coat = coat;
+		this.dob = dob;
+		this.cured = cured;
 	}
 
 
 
+	// Has an equals (uses only id)
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Dog other = (Dog) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+	// Avoid infinite loops!
+	@Override
+	public String toString() {
+		return "Dog [id=" + id + ", name=" + name + ", breed=" + breed + ", coat=" + coat + ", dob=" + dob + "]";
+	}
+
+	// Has getters and setters for the attributes
 	public Integer getId() {
 		return id;
 	}
-
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -62,35 +92,6 @@ public class Dog implements Serializable{
 	}
 
 
-	public Date getDob() {
-		return dob;
-	}
-
-
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
-
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, name);
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) // check if the object is the same
-			return true;
-		if (obj == null) // check if the obj is null
-			return false;
-		if (getClass() != obj.getClass()) // check if the objects are from the same class
-			return false;
-		Dog other = (Dog) obj; // if they are cast the other obt to the class
-		return Objects.equals(id, other.id) && Objects.equals(name, other.name); // compare the id ant the name if it's the same
-	}
-
-
 	public String getBreed() {
 		return breed;
 	}
@@ -101,22 +102,48 @@ public class Dog implements Serializable{
 	}
 
 
+	public String getCoat() {
+		return coat;
+	}
+
+
+	public void setCoat(String coat) {
+		this.coat = coat;
+	}
+
+
+	public Date getDob() {
+		return dob;
+	}
+
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public Boolean getCured() {
+		return cured;
+	}
+
+	public void setCured(Boolean cured) {
+		this.cured = cured;
+	}
+
 	public Owner getOwner() {
 		return owner;
 	}
-
 
 	public void setOwner(Owner owner) {
 		this.owner = owner;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Dog [id=" + id + ", name=" + name + ", dob=" + dob + ", breed=" + breed + "]";
+	public List<Vet> getVets() {
+		return vets;
 	}
-	
-	
+
+	public void setVets(List<Vet> vets) {
+		this.vets = vets;
+	}
 	
 	
 }

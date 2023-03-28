@@ -1,19 +1,21 @@
 package zooDemoPOJO;
 
+
 public class test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	
 		
-		Dog dog = new Dog(1,"Indi",null, "Golden");
-		Owner owner = new Owner(1,"Maria", 456956, "maria@email.com");
 		
-		dog.setOwner(owner);
-		owner.addDog(dog);
-		
-		System.out.println(owner);
-		System.out.println(dog);
+//		Dog dog = new Dog(1,"Indi",null, "Golden");
+//		Owner owner = new Owner(1,"Maria", 456956, "maria@email.com");
+//		
+//		dog.setOwner(owner);
+//		owner.addDog(dog);
+//		
+//		System.out.println(owner);
+//		System.out.println(dog);
 
 		
 		
