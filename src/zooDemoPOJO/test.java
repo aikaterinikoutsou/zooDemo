@@ -8,6 +8,7 @@ public class test {
 	
 		
 		
+
 //		Dog dog = new Dog(1,"Indi",null, "Golden");
 //		Owner owner = new Owner(1,"Maria", 456956, "maria@email.com");
 //		
@@ -18,6 +19,7 @@ public class test {
 //		System.out.println(dog);
 
 		
+
 		
 //		
 //		Dog dog= new Dog();
