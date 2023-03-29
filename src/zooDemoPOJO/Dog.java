@@ -26,7 +26,7 @@ public class Dog implements Serializable{
 	private String coat;
 	private Date dob;
 	private Boolean cured;
-	private Owner owner; // Many to one relationship
+	private Integer owner; // Many to one relationship
 	private List<Vet> vets; // Many to many relationship
 	
 	// Has an empty constructor
@@ -37,13 +37,14 @@ public class Dog implements Serializable{
 	
 	
 	
-	public Dog( String name, String breed, String coat, Date dob, Boolean cured) {
+	public Dog( String name, String breed, String coat, Boolean cured, Integer owner) {
 		super();
 		this.name = name;
 		this.breed = breed;
 		this.coat = coat;
-		this.dob = dob;
+		//this.dob = dob;
 		this.cured = cured;
+		this.owner = owner;
 	}
 
 
@@ -129,11 +130,11 @@ public class Dog implements Serializable{
 		this.cured = cured;
 	}
 
-	public Owner getOwner() {
+	public Integer getOwner() {
 		return owner;
 	}
 
-	public void setOwner(Owner owner) {
+	public void setOwner(Integer owner) {
 		this.owner = owner;
 	}
 
