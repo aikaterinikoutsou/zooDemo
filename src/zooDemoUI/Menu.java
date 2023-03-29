@@ -25,7 +25,36 @@ public class Menu {
 	System.out.println("Add a new dog.");
 	//create new dog method
 	try {
-		createDog();
+		do {
+			System.out.println("Choose an option");
+			System.out.println("1. Create new dog");
+			System.out.println("2. Create new Vet");
+			System.out.println("3. Assign a dog to a vet");
+			System.out.println("4. Update Vet speciality");
+			System.out.println("5. Delete Dog");
+			System.out.println("0. exit");
+
+			int choice = Integer.parseInt(reader.readLine());
+			switch(choice)
+			{
+			case 1:
+				createDog();
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 0: 
+				jdbcManager.disconnect();
+				System.exit(0);
+			default:
+				break;
+			}
+		}while(true);
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
