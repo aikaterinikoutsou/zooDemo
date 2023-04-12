@@ -99,6 +99,32 @@ public class JDBCVetManager implements VetManager {
 		}
 			
 	}
+
+	@Override
+	public Vet getVetbyId(int id) {
+		// TODO Auto-generated method stub
+		
+		Vet v = null;
+		try {
+			Statement stmt = manager.getConnection().createStatement();
+			String sql = "SELECT * FROM vets WHERE id=" + id;
+			ResultSet rs = stmt.executeQuery(sql);
+			
+				String name = rs.getString("name");
+				String speciality = rs.getString("speciality");
+				v = new Vet(id, name, speciality);				
+			
+			rs.close();
+			stmt.close();
+			
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		return v;
+	}
+	
+	
 	 
 
 }

@@ -40,6 +40,7 @@ public class Menu {
 			System.out.println("4. Update Vet speciality");
 			System.out.println("5. Delete Vet");
 			System.out.println("6. Get the List of All vets");
+			System.out.println("7. ChooseVet");
 			System.out.println("0. exit");
 
 			int choice = Integer.parseInt(reader.readLine());
@@ -63,6 +64,9 @@ public class Menu {
 			case 6:
 				getListVets();
 				break;
+			case 7:
+				chooseVet();
+				break;
 			case 0: 
 				jdbcManager.disconnect();
 				System.exit(0);
@@ -77,6 +81,17 @@ public class Menu {
 	
 	}
 	
+	private static void chooseVet() throws Exception{
+		// TODO Auto-generated method stub
+		Vet v = new Vet();
+		System.out.println("Please choose a vet, type its ID:");
+		System.out.println(vetManager.getListAllVets());
+		Integer vetID = Integer.parseInt(reader.readLine());
+		//show vet data
+		v = vetManager.getVetbyId(vetID);
+		System.out.println(v.toString());
+	}
+
 	private static void assignDog() throws Exception{
 		// TODO Auto-generated method stub
 		System.out.println("Please enter the dog ID to assign:");

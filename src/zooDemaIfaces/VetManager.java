@@ -18,4 +18,7 @@ public interface VetManager {
 	//delete vet by ID
 	public void deleteVetbyID(int vet_id);
 	
+	// gets a specific vet
+	public Vet getVetbyId(int id);
+	
 }
