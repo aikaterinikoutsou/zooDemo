@@ -9,10 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import zooDemaIfaces.DogManager;
+import zooDemaIfaces.UserManager;
 import zooDemaIfaces.VetManager;
 import zooDemoJDBC.JDBCDogManager;
 import zooDemoJDBC.JDBCManager;
 import zooDemoJDBC.JDBCVetManager;
+import zooDemoJPA.JPAUserManager;
 import zooDemoPOJO.Dog;
 import zooDemoPOJO.Vet;
 
@@ -21,6 +23,7 @@ public class Menu {
 	private static BufferedReader reader = new BufferedReader (new InputStreamReader(System.in));
 	private static DogManager dogManager;
 	private static VetManager vetManager;
+	private static UserManager userManager;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -28,6 +31,7 @@ public class Menu {
 	JDBCManager jdbcManager = new JDBCManager();
 	dogManager = new JDBCDogManager(jdbcManager);
 	vetManager = new JDBCVetManager(jdbcManager);
+	userManager = new JPAUserManager();
 	
 	System.out.println("Add a new dog.");
 	//create new dog method
