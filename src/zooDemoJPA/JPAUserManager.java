@@ -71,7 +71,7 @@ public class JPAUserManager implements UserManager {
 	@Override
 	public List<Role> getRoles() {
 		// TODO Auto-generated method stub
-		Query q = em.createNativeQuery("SELECT * from roles", Role.class);
+		Query q = em.createNativeQuery("SELECT * FROM roles", Role.class);
 		List<Role> roles = (List<Role>) q.getResultList();
 		
 		return roles;

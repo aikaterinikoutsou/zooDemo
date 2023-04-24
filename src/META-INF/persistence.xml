@@ -10,8 +10,8 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
  
 		<!-- Entity Class -->
-		<class>sample.db.pojos.User</class>
-		<class>sample.db.pojos.Role</class>
+		<class>zooDemoPOJO.User</class>
+		<class>zooDemoPOJO.Role</class>
 		
 		<properties>	
 			<!-- Connection properties -->
