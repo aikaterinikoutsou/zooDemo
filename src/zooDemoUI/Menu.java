@@ -13,6 +13,7 @@ import zooDemoJDBC.JDBCManager;
 import zooDemoJDBC.JDBCVetManager;
 import zooDemoJPA.JPAUserManager;
 import zooDemoPOJO.Dog;
+import zooDemoPOJO.User;
 import zooDemoPOJO.Vet;
 
 public class Menu {
@@ -21,55 +22,31 @@ public class Menu {
 	private static DogManager dogManager;
 	private static VetManager vetManager;
 	private static UserManager userManager;
+	private static JDBCManager jdbcManager;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-	JDBCManager jdbcManager = new JDBCManager();
+	jdbcManager = new JDBCManager();
 	dogManager = new JDBCDogManager(jdbcManager);
 	vetManager = new JDBCVetManager(jdbcManager);
 	userManager = new JPAUserManager();
 	
-	System.out.println("Add a new dog.");
-	//create new dog method
 	try {
 		do {
 			System.out.println("Choose an option");
-			System.out.println("1. Create new dog");
-			System.out.println("2. Create new Vet");
-			System.out.println("3. Assign a dog to a vet");
-			System.out.println("4. Update Vet speciality");
-			System.out.println("5. Delete Vet");
-			System.out.println("6. Get the List of All vets");
-			System.out.println("7. ChooseVet");
+			System.out.println("1. Login Owner");
 			System.out.println("0. exit");
 
 			int choice = Integer.parseInt(reader.readLine());
 			switch(choice)
 			{
 			case 1:
-				createDog();
-				break;
-			case 2:
-				createVet();
-				break;
-			case 3:
-				assignDog();
-				break;
-			case 4:
-				updateVetSpeciality();
-				break;
-			case 5:
-				deleteVet();
-				break;
-			case 6:
-				getListVets();
-				break;
-			case 7:
-				chooseVet();
+				loginOwner();
 				break;
 			case 0: 
 				jdbcManager.disconnect();
+				userManager.disconnect();
 				System.exit(0);
 			default:
 				break;
@@ -80,6 +57,56 @@ public class Menu {
 		e.printStackTrace();
 	}
 	
+	}
+	
+	
+	private static void ownerMenu(Integer id) throws Exception{
+		
+		try {
+			do {
+				System.out.println("Choose an option");
+				System.out.println("1. Create new dog");
+				System.out.println("2. Get the List of All vets");
+				System.out.println("0. exit");
+
+				int choice = Integer.parseInt(reader.readLine());
+				switch(choice)
+				{
+				case 1:
+					createDog();
+					break;
+				case 2:
+					getListVets();
+					break;
+				case 0: 
+					jdbcManager.disconnect();
+					userManager.disconnect();
+					System.exit(0);
+				default:
+					break;
+				}
+			}while(true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private static void loginOwner() throws Exception{
+		
+		System.out.println("Email:");
+		String email = reader.readLine();
+		
+		System.out.println("Password: ");
+		String passwd = reader.readLine();
+		User u = userManager.checkPassword(email, passwd);
+		
+		if(u!=null & u.getRole().getName().equals("owner"))
+		{	
+			System.out.println("Login Successful!");
+			ownerMenu(u.getId());
+		}
+		
 	}
 	
 	private static void chooseVet() throws Exception{
