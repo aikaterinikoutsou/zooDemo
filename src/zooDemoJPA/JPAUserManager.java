@@ -38,7 +38,6 @@ public class JPAUserManager implements UserManager {
 		}
 		
 	}
-
 	
 	@Override
 	public void disconnect() {
