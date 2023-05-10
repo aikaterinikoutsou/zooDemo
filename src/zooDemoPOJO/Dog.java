@@ -6,12 +6,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
 
 //POJO -- Plain Old Java Object
 //POJO has empty constructors without parameters, only setter and getters
 //Hashcode and equals
 //implement the serializable interface
 //Has toString method
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name= "Dog")
+@XmlType(propOrder = {})
 
 public class Dog implements Serializable{
 	
@@ -20,13 +31,21 @@ public class Dog implements Serializable{
 	
 	
 	// Has attributes
+	@XmlTransient
 	private Integer id;
+	@XmlAttribute
 	private String name;
+	@XmlElement
 	private String breed;
+	@XmlElement
 	private String coat;
+	@XmlElement
 	private Date dob;
+	@XmlElement
 	private Boolean cured;
+	@XmlElement
 	private Integer owner; // Many to one relationship
+	@XmlTransient
 	private List<Vet> vets; // Many to many relationship
 	
 	// Has an empty constructor

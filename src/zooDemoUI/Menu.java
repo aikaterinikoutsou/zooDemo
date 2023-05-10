@@ -8,6 +8,7 @@ import java.util.List;
 import zooDemaIfaces.DogManager;
 import zooDemaIfaces.UserManager;
 import zooDemaIfaces.VetManager;
+import zooDemaIfaces.XMLManager;
 import zooDemoJDBC.JDBCDogManager;
 import zooDemoJDBC.JDBCManager;
 import zooDemoJDBC.JDBCVetManager;
@@ -15,6 +16,7 @@ import zooDemoJPA.JPAUserManager;
 import zooDemoPOJO.Dog;
 import zooDemoPOJO.User;
 import zooDemoPOJO.Vet;
+import zooDemoXML.XMLManagerImpl;
 
 public class Menu {
 
@@ -23,6 +25,7 @@ public class Menu {
 	private static VetManager vetManager;
 	private static UserManager userManager;
 	private static JDBCManager jdbcManager;
+	private static XMLManager xmlmanager;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -31,6 +34,7 @@ public class Menu {
 	dogManager = new JDBCDogManager(jdbcManager);
 	vetManager = new JDBCVetManager(jdbcManager);
 	userManager = new JPAUserManager();
+	xmlmanager = new XMLManagerImpl();
 	
 	try {
 		do {
@@ -67,6 +71,7 @@ public class Menu {
 				System.out.println("Choose an option");
 				System.out.println("1. Create new dog");
 				System.out.println("2. Get the List of All vets");
+				System.out.println("3. Print my Data");
 				System.out.println("0. exit");
 
 				int choice = Integer.parseInt(reader.readLine());
@@ -78,6 +83,8 @@ public class Menu {
 				case 2:
 					getListVets();
 					break;
+				case 3:
+					printMe(id);
 				case 0: 
 					jdbcManager.disconnect();
 					userManager.disconnect();
@@ -92,6 +99,11 @@ public class Menu {
 		}
 	}
 	
+	private static void printMe(Integer id) {
+		xmlmanager.owner2xml(id);
+	}
+
+
 	private static void loginOwner() throws Exception{
 		
 		System.out.println("Email:");
