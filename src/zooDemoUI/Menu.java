@@ -1,6 +1,7 @@
 package zooDemoUI;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +73,7 @@ public class Menu {
 				System.out.println("1. Create new dog");
 				System.out.println("2. Get the List of All vets");
 				System.out.println("3. Print my Data");
+				System.out.println("4. Load new dogs");
 				System.out.println("0. exit");
 
 				int choice = Integer.parseInt(reader.readLine());
@@ -85,6 +87,9 @@ public class Menu {
 					break;
 				case 3:
 					printMe(id);
+					break;
+				case 4: 
+					loadDogs();
 				case 0: 
 					jdbcManager.disconnect();
 					userManager.disconnect();
@@ -99,6 +104,15 @@ public class Menu {
 		}
 	}
 	
+	private static void loadDogs() {
+	    Dog d= null;
+		File file = new File("./xmls/External-Dog.xml");
+		d = xmlmanager.xml2Dog(file);
+		
+		System.out.println(d);
+	}
+
+
 	private static void printMe(Integer id) {
 		xmlmanager.owner2xml(id);
 	}

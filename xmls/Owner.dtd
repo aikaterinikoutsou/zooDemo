@@ -1,0 +1,17 @@
+<!DOCTYPE Owner [
+	<!ELEMENT Owner(email, phone, cardNumber, dogs)>
+	<!ATTLIST Owner name CDATA #REQUIRED>
+	<!ELEMENT email (#PCDATA)>
+	<!ELEMENT phone (#PCDATA)>
+	<!ELEMENT cardNumber (#PCDATA)>
+	<!ELEMENT dogs (dogs+)>
+	<!ELEMENT dog (breed,coat, dob, cured, owner)>
+	<!ATTLIST dog name CDATA #REQUIRED>
+		<!ELEMENT breed (#PCDATA)>
+		<!ELEMENT coat (#PCDATA)>
+		<!ELEMENT dob (#PCDATA)>
+		<!ELEMENT cured (#PCDATA)>
+		<!ELEMENT owner (#PCDATA)>
+]>
+	
+	

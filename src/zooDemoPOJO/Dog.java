@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
 //Has toString method
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name= "Dog")
-@XmlType(propOrder = {})
+@XmlType(propOrder = {"breed","coat", "dob", "cured", "owner"})
 
 public class Dog implements Serializable{
 	

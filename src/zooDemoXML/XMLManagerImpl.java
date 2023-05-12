@@ -83,12 +83,37 @@ public class XMLManagerImpl implements XMLManager {
 			
 			d = (Dog) unmarshaller.unmarshal(xml);
 			
+			
+			
+			//JDBC code to insert dog to table dogs
+			
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 		
 		return d;
+	}
+
+	@Override
+	public Owner xml2Owner(File xml) {
+		Owner o = null;
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(Dog.class);
+			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+			
+			o = (Owner) unmarshaller.unmarshal(xml);
+			
+			
+			
+			//JDBC code to insert dog to table dogs
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return o;
 	}
 
 }

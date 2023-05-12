@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!DOCTYPE Owner [
+	<!ELEMENT Owner (email, phone, cardNumber, dogs)>
+	<!ATTLIST Owner name CDATA #REQUIRED>
+	<!ELEMENT email (#PCDATA)>
+	<!ELEMENT phone (#PCDATA)>
+	<!ELEMENT cardNumber (#PCDATA)>
+	<!ELEMENT dogs (dog+)>
+	<!ELEMENT dog (breed,coat, dob, cured, owner)>
+	<!ATTLIST dog name CDATA #REQUIRED>
+		<!ELEMENT breed (#PCDATA)>
+		<!ELEMENT coat (#PCDATA)>
+		<!ELEMENT dob (#PCDATA)>
+		<!ELEMENT cured (#PCDATA)>
+		<!ELEMENT owner (#PCDATA)>
+]>
+
+
+<Owner name= "Mario">
+	<email> aikaterini.koutsou@ceu.es </email>
+	<phone> 15050 </phone>
+	<cardNumber> 56898231659596 </cardNumber>
+	<dogs>
+		<dog name= "Max">
+			<breed> Doberman </breed>
+			<coat>black</coat>
+			<dob>2016-12-21</dob>
+			<cured>1</cured>
+			<owner>1</owner>
+		</dog>
+		<dog name= "Sunshine">
+			<breed> labrador </breed>
+			<coat>brown</coat>
+			<dob>2010-08-13</dob>
+			<cured>0</cured>
+			<owner>1</owner>
+		</dog>
+	</dogs>	
+</Owner>
+	
