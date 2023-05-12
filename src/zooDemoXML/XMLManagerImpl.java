@@ -8,7 +8,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import zooDemaIfaces.DogManager;
 import zooDemaIfaces.XMLManager;
+import zooDemoJDBC.JDBCDogManager;
 import zooDemoJDBC.JDBCManager;
 import zooDemoPOJO.Dog;
 import zooDemoPOJO.Owner;
@@ -76,16 +78,18 @@ public class XMLManagerImpl implements XMLManager {
 
 	@Override
 	public Dog xml2Dog(File xml) {
+		JDBCManager jdbcManager = new JDBCManager();
+		DogManager dogMan = new JDBCDogManager(jdbcManager);
+		
 		Dog d = null;
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Dog.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			
 			d = (Dog) unmarshaller.unmarshal(xml);
-			
-			
-			
+						
 			//JDBC code to insert dog to table dogs
+			dogMan.addDog(d);
 			
 		}catch(Exception e)
 		{
