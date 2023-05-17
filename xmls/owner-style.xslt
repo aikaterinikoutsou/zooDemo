@@ -4,9 +4,7 @@
 <xsl:template match="/">
    <html>
 	
-	<p><b><xsl:value-of select="//name" /></b></p>
-    <p><b>Contents: </b><xsl:value-of select="//content" /></p>
-    <p><b>Owner:</b></p>
+	<p><b>Owner:</b></p>
 	<xsl:value-of select="Owner"/>
 	<p> Name: <xsl:value-of select="@name" /> </p>
 	<p> Email:   <xsl:value-of select="email" /> </p>
