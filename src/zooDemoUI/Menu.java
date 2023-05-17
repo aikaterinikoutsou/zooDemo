@@ -151,6 +151,7 @@ public class Menu {
 
 	private static void printMe(Integer id) {
 		xmlmanager.owner2xml(id);
+		xmlmanager.simpleTransform("./xmls/Owner.xml", "./xmls/owner-style.xslt", "./xmls/owner.html");
 	}
 
 
