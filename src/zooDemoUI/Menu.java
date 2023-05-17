@@ -3,6 +3,7 @@ package zooDemoUI;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import zooDemoJDBC.JDBCManager;
 import zooDemoJDBC.JDBCVetManager;
 import zooDemoJPA.JPAUserManager;
 import zooDemoPOJO.Dog;
+import zooDemoPOJO.Role;
 import zooDemoPOJO.User;
 import zooDemoPOJO.Vet;
 import zooDemoXML.XMLManagerImpl;
@@ -41,6 +43,7 @@ public class Menu {
 		do {
 			System.out.println("Choose an option");
 			System.out.println("1. Login Owner");
+			System.out.println("2. Sign Up Owner");
 			System.out.println("0. exit");
 
 			int choice = Integer.parseInt(reader.readLine());
@@ -48,6 +51,9 @@ public class Menu {
 			{
 			case 1:
 				loginOwner();
+				break;
+			case 2:
+				signUpUser();
 				break;
 			case 0: 
 				jdbcManager.disconnect();
@@ -65,6 +71,36 @@ public class Menu {
 	}
 	
 	
+	private static void signUpUser() {
+		
+	
+		try {
+			
+			System.out.println("Email:");
+			String email = reader.readLine();
+			
+			System.out.println("Password: ");
+			String passwd = reader.readLine();
+			
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(passwd.getBytes());
+			byte[] digest = md.digest();
+			
+			System.out.println("Role: ");
+			Integer rol = Integer.parseInt(reader.readLine());
+			Role r = userManager.getRole(rol);
+			
+			User u = new User(email, digest, r);
+			userManager.newUser(u);
+		 
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+
 	private static void ownerMenu(Integer id) throws Exception{
 		
 		try {

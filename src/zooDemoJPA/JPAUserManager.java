@@ -62,14 +62,17 @@ public class JPAUserManager implements UserManager {
 	}
 
 	@Override
-	public Role getRole(String email) {
-		// TODO Auto-generated method stub
-		return null;
+	public Role getRole(Integer id) {
+		
+		Query q = em.createNativeQuery("SELECT * FROM roles where id="+id, Role.class);
+		Role r = (Role) q.getSingleResult();
+		
+		return r;
 	}
 
 	@Override
 	public List<Role> getRoles() {
-		// TODO Auto-generated method stub
+		
 		Query q = em.createNativeQuery("SELECT * FROM roles", Role.class);
 		List<Role> roles = (List<Role>) q.getResultList();
 		

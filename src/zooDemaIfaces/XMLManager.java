@@ -11,6 +11,7 @@ public interface XMLManager {
 	public void dog2xml(Dog d);
 	public Dog xml2Dog(File xml);
 	public Owner xml2Owner(File xml);
+	public void simpleTransform(String sourcePath, String xsltPath,String resultDir);
 	
 
 }
