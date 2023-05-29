@@ -53,6 +53,12 @@ public class Dog implements Serializable{
 	
 	
 	
+	public Dog() {
+		super();
+	}
+
+
+
 	public Dog(Integer id, String name, String breed, String coat, Date dob, Boolean cured) {
 		super();
 		this.id = id;

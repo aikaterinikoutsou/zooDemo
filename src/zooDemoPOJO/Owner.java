@@ -46,7 +46,7 @@ public class Owner implements Serializable{
 		this.phone = phone;
 		this.email = email;
 		this.cardNumber = cardNumber;
-		this.dogs = new ArrayList<Dog>();
+		//this.dogs = new ArrayList<Dog>();
 	}
 
 	public Owner(String name, Integer phone, String email, Integer cardNumber) {

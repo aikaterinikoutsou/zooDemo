@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Owner name="Katerina">
+    <email>aikaterini.koutsou@ceu.es</email>
+    <phone>15050</phone>
+    <cardNumber>456963213</cardNumber>
+    <Dogs>
+        <Dog name="max">
+            <breed>labrador</breed>
+            <coat>black</coat>
+            <cured>false</cured>
+        </Dog>
+        <Dog name="Figo">
+            <breed>Labrador</breed>
+            <coat>white</coat>
+            <cured>false</cured>
+        </Dog>
+    </Dogs>
+</Owner>
