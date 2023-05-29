@@ -1,0 +1,9 @@
+<!DOCTYPE Dog [
+<!ELEMENT Dog (breed,coat, dob, cured, owner)>
+	<!ATTLIST Dog name CDATA #REQUIRED>
+		<!ELEMENT breed (#PCDATA)>
+		<!ELEMENT coat (#PCDATA)>
+		<!ELEMENT dob (#PCDATA)>
+		<!ELEMENT cured (#PCDATA)>
+		<!ELEMENT owner (#PCDATA)>
+]>

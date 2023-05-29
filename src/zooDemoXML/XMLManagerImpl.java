@@ -1,8 +1,11 @@
 package zooDemoXML;
 
 import java.io.File;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -18,6 +21,7 @@ import zooDemoJDBC.JDBCDogManager;
 import zooDemoJDBC.JDBCManager;
 import zooDemoPOJO.Dog;
 import zooDemoPOJO.Owner;
+import zooDemoPOJO.Vet;
 
 public class XMLManagerImpl implements XMLManager {
 
@@ -26,6 +30,7 @@ public class XMLManagerImpl implements XMLManager {
 	public void owner2xml(Integer id) {
 		
 		Owner o = null;
+		List<Dog> dogs = new ArrayList<Dog>();
 		manager = new JDBCManager();
 		
 		try {
@@ -39,10 +44,28 @@ public class XMLManagerImpl implements XMLManager {
 		Integer phone = rs.getInt("phone");
 		String email = rs.getString("email");
 		Integer cardnumber = rs.getInt("cardnumber");
-		o = new Owner(id,name,phone, email,cardnumber);
 		
-		rs.close();
-		stmt.close();
+		Statement stmt2 = manager.getConnection().createStatement();
+		String sql2 = "Select * from dogs where ownerId="+id;
+		ResultSet rs2 = stmt.executeQuery(sql2);
+		
+		while(rs.next())
+		{
+			Integer id_d= rs.getInt("id");
+			String name_d = rs.getString("name");
+			String breed = rs.getString("breed");
+			String coat = rs.getString("coat");
+			Date dob = rs.getDate("dob");
+			Boolean cured = rs.getBoolean("cured");
+			
+			Dog d = new Dog(id_d, name_d, breed, coat, dob, cured);
+			dogs.add(d);
+		}
+		
+		
+		o = new Owner(id,name,phone, email,cardnumber);
+		o.setDogs(dogs);
+		
 		
 		// export the owner to the xml file	
 		JAXBContext jaxbContext = JAXBContext.newInstance(Owner.class);	
@@ -54,6 +77,9 @@ public class XMLManagerImpl implements XMLManager {
 		
 		marshaller.marshal(o,file);
 		
+		
+		rs.close();
+		stmt.close();
 		}catch(Exception e)
 		{
 			e.printStackTrace();

@@ -13,6 +13,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import zooDemoXMLutils.SQLDateAdapter;
 
 
 //POJO -- Plain Old Java Object
@@ -39,7 +42,7 @@ public class Dog implements Serializable{
 	private String breed;
 	@XmlElement
 	private String coat;
-	@XmlElement
+	@XmlJavaTypeAdapter(SQLDateAdapter.class)
 	private Date dob;
 	@XmlElement
 	private Boolean cured;
@@ -48,14 +51,21 @@ public class Dog implements Serializable{
 	@XmlTransient
 	private List<Vet> vets; // Many to many relationship
 	
-	// Has an empty constructor
-	public Dog() {
+	
+	
+	public Dog(Integer id, String name, String breed, String coat, Date dob, Boolean cured) {
 		super();
+		this.id = id;
+		this.name = name;
+		this.breed = breed;
+		this.coat = coat;
+		this.dob = dob;
+		this.cured = cured;
 		vets = new ArrayList<Vet>();
 	}
-	
-	
-	
+
+
+
 	public Dog( String name, String breed, String coat, Boolean cured, Integer owner) {
 		super();
 		this.name = name;

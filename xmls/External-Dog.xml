@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!DOCTYPE Dog [
+<!ELEMENT Dog (breed,coat, dob, cured, owner)>
+	<!ATTLIST Dog name CDATA #REQUIRED>
+		<!ELEMENT breed (#PCDATA)>
+		<!ELEMENT coat (#PCDATA)>
+		<!ELEMENT dob (#PCDATA)>
+		<!ELEMENT cured (#PCDATA)>
+		<!ELEMENT owner (#PCDATA)>
+]>
+
+
+<Dog name= "Max">
+	<breed> Doberman </breed>
+	<coat>black</coat>
+	<dob></dob>
+	<cured>1</cured>
+	<owner>1</owner>
+</Dog>
+		
+	

@@ -5,10 +5,9 @@
    <html>
 	
 	<p><b>Owner:</b></p>
-	<xsl:value-of select="Owner"/>
-	<p> Name: <xsl:value-of select="@name" /> </p>
-	<p> Email:   <xsl:value-of select="email" /> </p>
-	<p> Phone: <xsl:value-of select="phone" /></p>
+	<p> Name: <xsl:value-of select="Owner/@name" /> </p>
+	<p> Email:   <xsl:value-of select="Owner/email" /> </p>
+	<p> Phone: <xsl:value-of select="Owner/phone" /></p>
 	
 	<table border="1">
 	  <th>Dog's name</th>
