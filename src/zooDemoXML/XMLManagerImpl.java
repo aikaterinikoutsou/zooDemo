@@ -133,12 +133,10 @@ public class XMLManagerImpl implements XMLManager {
 	public Owner xml2Owner(File xml) {
 		Owner o = null;
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(Dog.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(Owner.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 			
 			o = (Owner) unmarshaller.unmarshal(xml);
-			
-			
 			
 			//JDBC code to insert dog to table dogs
 			

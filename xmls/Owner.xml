@@ -14,5 +14,10 @@
             <coat>white</coat>
             <cured>false</cured>
         </Dog>
+        <Dog name="Max">
+            <breed> Doberman </breed>
+            <coat>black</coat>
+            <cured>true</cured>
+        </Dog>
     </Dogs>
 </Owner>

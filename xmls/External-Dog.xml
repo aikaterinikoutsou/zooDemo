@@ -14,7 +14,7 @@
 <Dog name= "Max">
 	<breed> Doberman </breed>
 	<coat>black</coat>
-	<dob></dob>
+	<dob>2021-05-12</dob>
 	<cured>1</cured>
 	<owner>1</owner>
 </Dog>

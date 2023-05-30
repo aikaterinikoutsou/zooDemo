@@ -4,14 +4,14 @@
 	<!ELEMENT email (#PCDATA)>
 	<!ELEMENT phone (#PCDATA)>
 	<!ELEMENT cardNumber (#PCDATA)>
-	<!ELEMENT dogs (dogs+)>
-	<!ELEMENT dog (breed,coat, dob, cured, owner)>
+	<!ELEMENT dogs (dog+)>
+	<!ELEMENT dog (breed,coat, dob, cured)>
 	<!ATTLIST dog name CDATA #REQUIRED>
 		<!ELEMENT breed (#PCDATA)>
 		<!ELEMENT coat (#PCDATA)>
 		<!ELEMENT dob (#PCDATA)>
 		<!ELEMENT cured (#PCDATA)>
-		<!ELEMENT owner (#PCDATA)>
+		
 ]>
 	
 	

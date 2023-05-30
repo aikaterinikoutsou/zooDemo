@@ -4,18 +4,24 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import zooDemaIfaces.DogManager;
+import zooDemaIfaces.OwnerManager;
 import zooDemaIfaces.UserManager;
 import zooDemaIfaces.VetManager;
 import zooDemaIfaces.XMLManager;
 import zooDemoJDBC.JDBCDogManager;
 import zooDemoJDBC.JDBCManager;
+import zooDemoJDBC.JDBCOwnerManager;
 import zooDemoJDBC.JDBCVetManager;
 import zooDemoJPA.JPAUserManager;
 import zooDemoPOJO.Dog;
+import zooDemoPOJO.Owner;
 import zooDemoPOJO.Role;
 import zooDemoPOJO.User;
 import zooDemoPOJO.Vet;
@@ -26,6 +32,7 @@ public class Menu {
 	private static BufferedReader reader = new BufferedReader (new InputStreamReader(System.in));
 	private static DogManager dogManager;
 	private static VetManager vetManager;
+	private static OwnerManager ownerManager;
 	private static UserManager userManager;
 	private static JDBCManager jdbcManager;
 	private static XMLManager xmlmanager;
@@ -36,6 +43,7 @@ public class Menu {
 	jdbcManager = new JDBCManager();
 	dogManager = new JDBCDogManager(jdbcManager);
 	vetManager = new JDBCVetManager(jdbcManager);
+	ownerManager = new JDBCOwnerManager(jdbcManager);
 	userManager = new JPAUserManager();
 	xmlmanager = new XMLManagerImpl();
 	
@@ -110,6 +118,8 @@ public class Menu {
 				System.out.println("2. Get the List of All vets");
 				System.out.println("3. Print my Data");
 				System.out.println("4. Load new dogs");
+				System.out.println("5. Load Owner");
+				System.out.println("6. Print my dogs");
 				System.out.println("0. exit");
 
 				int choice = Integer.parseInt(reader.readLine());
@@ -126,6 +136,10 @@ public class Menu {
 					break;
 				case 4: 
 					loadDogs();
+				case 5:
+					loadOwner();
+				case 6:
+					printMydogs(id);
 				case 0: 
 					jdbcManager.disconnect();
 					userManager.disconnect();
@@ -140,6 +154,29 @@ public class Menu {
 		}
 	}
 	
+	private static void printMydogs(Integer id) {
+		// TODO Auto-generated method stub
+		List<Dog> dogs = null;
+		Owner o=null;
+		
+		dogs = dogManager.getListOfDogs(id);
+		o = ownerManager.findOwnerByID(id);
+		o.setDogs(dogs);		
+		System.out.println(dogs);
+	}
+
+
+	private static void loadOwner() {
+		// TODO Auto-generated method stub
+		Owner o = null;
+		File file = new File("./xmls/External-Owner.xml");
+		o = xmlmanager.xml2Owner(file);
+		
+		System.out.println(o);
+		
+	}
+
+
 	private static void loadDogs() {
 	    Dog d= null;
 		File file = new File("./xmls/External-Dog.xml");
@@ -150,6 +187,7 @@ public class Menu {
 
 
 	private static void printMe(Integer id) {
+		
 		xmlmanager.owner2xml(id);
 		//xmlmanager.simpleTransform("./xmls/Owner.xml", "./xmls/owner-style.xslt", "./xmls/owner.html");
 	}
@@ -221,10 +259,10 @@ public class Menu {
 		String breed = reader.readLine();
 		System.out.println("Type the coat:");
 		String coat = reader.readLine();
-		//System.out.println("Type the dob:");
-		//String dob_str = reader.readLine();
-		//DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-		//Date dob = (Date) df.parse(dob_str);
+		System.out.println("Type the dob in format yyyy/MM/dd:");
+		String dob_str = reader.readLine();
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		Date dob = (Date) df.parse(dob_str);
 		System.out.println("Type the cured:");
 		Boolean cured = Boolean.valueOf(reader.readLine());
 		System.out.println("Type the owner ID:");

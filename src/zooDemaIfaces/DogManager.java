@@ -14,5 +14,7 @@ public interface DogManager {
 	
 	//Assign a dog to a vet
 	public void assign(int vetID, int dogID);
+	
+	public List<Dog> getListOfDogs(Integer ownerId);
 
 }
